@@ -150,6 +150,24 @@ copilot --model gpt-4.1 -p "List the exact AI model IDs available to me via --mo
 
 Sans `--model`, Copilot CLI choisit selon le routing GitHub interne. Observé en pratique : par défaut sur `claude-haiku-4.5`. Pour forcer le modèle gratuit, **toujours passer `--model gpt-4.1` explicitement**.
 
+### Retour d'XP — comparatif 3 modèles sur tâche d'exécution déterministe
+
+Tâche : lancer un script déterministe via `-p` non-interactif et restituer sa sortie.
+
+- `gpt-4.1` (gratuit) — **fidèle**, restitue exactement. Choix optimal.
+- `claude-haiku-4.5` (~0,1 %/run) — fidèle aussi, **identique à gpt-4.1 mais payant** : aucun gain, à éviter quand gpt-4.1 suffit.
+- `gpt-5-mini` (gratuit) — **refus injustifié** (« I cannot assist with that request ») sur une tâche pourtant anodine. À proscrire pour l'orchestration/exécution.
+
+Corollaire : pour déléguer l'**exécution** d'un script préparé en amont, `gpt-4.1` suffit et coûte 0. La fiabilité vient du **script déterministe**, pas du modèle — multiplier les modèles puissants n'aide pas, et certains (`gpt-5-mini`) refusent à tort. Après ~9 échecs de délégation « prompt → le modèle construit les commandes », le pattern gagnant est : **script déterministe écrit en amont + modèle qui ne fait que le lancer**.
+
+> **Confirmé** : `gpt-5-mini` re-testé → **refus reproductible (2/2)**, systématique sur l'orchestration/exécution.
+
+#### Stratégie modèle & fallback (recommandation)
+
+- **Exécution déterministe** (lancer un script préparé en amont) : **1 seul appel `gpt-4.1`**. Pas de double appel — la redondance de modèles n'apporte rien quand le script est déterministe (`gpt-4.1` et `claude-haiku-4.5` donnent un résultat identique).
+- **Fallback utile** : `gpt-4.1` (primaire, gratuit) → en cas d'échec *technique* réel → `claude-haiku-4.5` (~0,1 %/run, fiable). **Pas** de fallback vers `gpt-5-mini` (refuse l'orchestration).
+- **Double appel / multi-modèle** : à réserver aux tâches de **jugement ou d'analyse ouverte** (2 avis indépendants ont de la valeur), jamais à l'exécution déterministe (gaspillage de conso sans gain).
+
 ## Wrapper local recommandé
 
 ```bash
