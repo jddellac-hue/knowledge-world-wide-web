@@ -1,6 +1,6 @@
 # Davis AI — modes, baselines, RCA, CoPilot
 
-> Référence interne. Source détaillée : [`03-davis-ai.md`](../03-davis-ai.md) (workdir local).
+> Référence interne. Source détaillée (doctrine portable, autre repo) : `vigiliance/docs/observabilite-dynatrace/doctrine/03-davis-ai.md`.
 
 ## Vue d'ensemble
 
