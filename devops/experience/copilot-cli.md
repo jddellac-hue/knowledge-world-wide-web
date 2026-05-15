@@ -187,4 +187,4 @@ Usage : `copilot-remote "résume-moi ce fichier..."`. Surcharge possible : `COPI
 ## Liens
 
 - Doctrine two-tier LLM advisory : `[sre/guides/signal-first-doctrine.md](../../sre/guides/signal-first-doctrine.md)`
-- Spec MCP anonymizer middleware : appartient à `dynatrace-sre/docs/architecture/mcp-anonymizer-middleware-spec.md` (repo public)
+- Spec MCP anonymizer middleware : `pseudonymizer-agent/docs/architecture/mcp-anonymizer-middleware-spec.md` (repo privé)

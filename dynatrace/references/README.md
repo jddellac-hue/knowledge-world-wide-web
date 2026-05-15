@@ -17,4 +17,4 @@
 - `dashboards-as-code.md` — Monaco vs Terraform, templating, sharing.
 - `api-mcp.md` — APIs Dynatrace, Platform Tokens, MCP officiel.
 
-Cf. drafts source dans le repo `dynatrace-sre/kb-enrichments/`.
+Cf. doctrine consolidée dans `vigiliance` (docs/observabilite-dynatrace/).

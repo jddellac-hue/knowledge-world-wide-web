@@ -15,4 +15,4 @@
 - `use-red-4gs-dql.md` — bibliothèque DQL prête à l'emploi USE/RED/4GS.
 - `slo-dynatrace-vs-pyrra.md` — coexistence des 2 mondes SLO.
 
-Cf. drafts source dans le repo `dynatrace-sre/kb-enrichments/`.
+Cf. doctrine consolidée dans `vigiliance` (docs/observabilite-dynatrace/).
