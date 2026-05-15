@@ -1,0 +1,77 @@
+name: Build & Deploy mdBook to GitHub Pages
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    env:
+      HTML_ONLY: "1"          # CI : pas de PDF / chromium / cargo lourd
+      SUBKBS: "sre devops kubernetes helm concourse java quarkus spring angular messaging dynatrace mise tanzu cloud diagramming n8n oauth s3"
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install mdBook + mermaid
+        uses: peaceiris/actions-mdbook@v2
+        with:
+          mdbook-version: latest
+      - name: Install mdbook-mermaid (optional)
+        run: cargo install mdbook-mermaid || echo "mdbook-mermaid indispo — diagrammes en code brut"
+
+      - name: Install mise
+        uses: jdx/mise-action@v2
+
+      - name: Build each sub-KB (HTML only)
+        run: |
+          set -e
+          mkdir -p _site
+          built=""
+          for kb in $SUBKBS; do
+            [ -d "$kb" ] || continue
+            echo "▶ build $kb"
+            if HTML_ONLY=1 mise run book -- "$kb" 2>&1 | tail -3; then
+              if [ -d "$kb/book" ]; then
+                mkdir -p "_site/$kb"
+                cp -r "$kb/book/." "_site/$kb/"
+                built="$built $kb"
+              fi
+            else
+              echo "⚠️ build $kb échoué — ignoré"
+            fi
+          done
+          # Index racine listant les sous-KB construits
+          {
+            echo '<!doctype html><meta charset="utf-8"><title>knowledge-world-wide-web</title>'
+            echo '<style>body{font:16px system-ui;max-width:42rem;margin:3rem auto;padding:0 1rem}a{display:block;padding:.4rem 0}</style>'
+            echo '<h1>knowledge-world-wide-web</h1>'
+            echo '<p>Base de connaissances techniques générique — produite et maintenue par IA (voir le disclaimer de chaque livre).</p>'
+            for kb in $built; do echo "<a href=\"./$kb/\">📘 $kb</a>"; done
+          } > _site/index.html
+          echo "Construits :$built"
+
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4

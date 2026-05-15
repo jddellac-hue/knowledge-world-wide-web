@@ -1,0 +1,10 @@
+# mise.toml — knowledge-world-wide-web
+# Tâches utilitaires de la KB www.
+
+[tasks.book]
+description = "Génère un mdbook (HTML + PDF) pour une sous-KB. Usage : mise run book -- <sous-kb>  (ex: sre, helm, kafka)"
+run = "bash .scripts/build-book.sh"
+
+[tasks."book:clean"]
+description = "Supprime les artefacts mdbook d'une sous-KB. Usage : mise run book:clean -- <sous-kb>"
+run = "bash .scripts/clean-book.sh"

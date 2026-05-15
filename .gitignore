@@ -1,0 +1,17 @@
+# Artefacts générés par `mise run book` (mdbook + PDF) dans chaque sous-KB
+**/book/
+**/src/
+**/book.toml
+**/mermaid.min.js
+**/mermaid-init.js
+
+# IDE
+.idea/
+**/print-extras.css
+**/preamble-class.js
+
+# GitLab Pages output (généré par CI ou test local du build)
+public/
+
+# Cache CI : binaires mdbook pré-compilés
+.ci-bin/
