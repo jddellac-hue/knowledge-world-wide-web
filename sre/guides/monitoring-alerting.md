@@ -236,7 +236,7 @@ Cliquer sur un panel monte d'un niveau. Le dashboard top reste lisible en moins 
 
 Mettre une **ligne verticale** sur les graphes de chaque déploiement. Rien ne ressemble plus à une dégradation post-déploiement qu'une dégradation post-déploiement. C'est gratuit et ça économise des minutes en investigation.
 
-*Pattern supporté nativement par Grafana [📖¹¹](https://grafana.com/docs/grafana/latest/dashboards/build-dashboards/annotate-visualizations/) et Datadog.*
+*Pattern supporté nativement par Grafana [📖¹¹](https://grafana.com/docs/grafana/latest/dashboards/build-dashboards/annotate-visualizations/ "Grafana — Annotate visualizations") et Datadog.*
 
 ## Runbooks — obligatoires pour chaque alerte
 
@@ -278,8 +278,8 @@ Chaque alerte qui réveille un humain **doit** pointer vers un runbook (champ `a
 ## Lien avec les pratiques observabilité moderne
 
 Le monitoring "classique" (metrics + alerts) suffit pour les pannes connues. Pour les pannes nouvelles (*"unknown unknowns"* — terme popularisé par [Charity Majors / Honeycomb](https://www.honeycomb.io/blog/so-you-want-to-build-an-observability-tool)), il faut de l'**observabilité** :
-- Wide events / structured logs [📖¹²](https://opentelemetry.io/docs/concepts/signals/logs/)
-- Distributed tracing avec context propagation [📖¹³](https://opentelemetry.io/docs/concepts/signals/traces/)
+- Wide events / structured logs [📖¹²](https://opentelemetry.io/docs/concepts/signals/logs/ "OpenTelemetry — Logs signal")
+- Distributed tracing avec context propagation [📖¹³](https://opentelemetry.io/docs/concepts/signals/traces/ "OpenTelemetry — Traces signal")
 - Cardinality élevée (UserID, requestID, deployVersion)
 
 Cf. [`observability-vs-monitoring.md`](observability-vs-monitoring.md).
@@ -319,9 +319,9 @@ Sources primaires vérifiées :
 8. [Prometheus — Alertmanager](https://prometheus.io/docs/alerting/latest/alertmanager/ "Prometheus — Alertmanager (routing, deduplication)")
 9. [SRE workbook — Alerting on SLOs](https://sre.google/workbook/alerting-on-slos/ "Google SRE workbook — Alerting on SLOs (burn rate alerting)") — Table 5-8 multi-window burn rate
 10. [AWS Builders' Library — Implementing Health Checks](https://aws.amazon.com/builders-library/implementing-health-checks/ "AWS Builders Library — Implementing health checks (David Yanacek)") — fail open pattern
-11. [Grafana — Annotate visualizations](https://grafana.com/docs/grafana/latest/dashboards/build-dashboards/annotate-visualizations/)
-12. [OpenTelemetry — Logs signal](https://opentelemetry.io/docs/concepts/signals/logs/)
-13. [OpenTelemetry — Traces signal](https://opentelemetry.io/docs/concepts/signals/traces/)
+11. [Grafana — Annotate visualizations](https://grafana.com/docs/grafana/latest/dashboards/build-dashboards/annotate-visualizations/ "Grafana — Annotate visualizations")
+12. [OpenTelemetry — Logs signal](https://opentelemetry.io/docs/concepts/signals/logs/ "OpenTelemetry — Logs signal")
+13. [OpenTelemetry — Traces signal](https://opentelemetry.io/docs/concepts/signals/traces/ "OpenTelemetry — Traces signal")
 
 Ressources complémentaires :
 - [Microsoft Azure WAF — Health monitoring](https://learn.microsoft.com/en-us/azure/well-architected/operational-excellence/observability)

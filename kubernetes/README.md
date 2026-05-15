@@ -28,6 +28,7 @@ mindmap
 | [guides/kubernetes-advanced.md](guides/kubernetes-advanced.md) | Kubernetes avancé |
 | [guides/gitops-expert.md](guides/gitops-expert.md) | GitOps expert |
 | [guides/multi-env-patterns.md](guides/multi-env-patterns.md) | Patterns multi-environnement |
+| [gateway-api.md](gateway-api.md) | Gateway API — successeur d'Ingress (routage L4/L7) |
 
 ## Architecture conceptuelle
 

@@ -30,6 +30,7 @@ mindmap
 |---------|-------------|
 | [README.md](README.md) | Point d'entrée Spring Boot |
 | [versions/spring-boot-4.md](versions/spring-boot-4.md) | Notes de version Spring Boot 4 |
+| [spring-cloud-gateway.md](spring-cloud-gateway.md) | Spring Cloud Gateway — API gateway réactive (routes, filtres, resilience) |
 
 ## Table of Contents
 

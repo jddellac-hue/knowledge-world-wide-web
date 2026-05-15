@@ -95,7 +95,7 @@ flowchart LR
     A["Old 100%"]:::old --> B["Old 75% + New 25%"]:::mix --> C["Old 50% + New 50%"]:::mix --> D["Old 25% + New 75%"]:::mix --> E["New 100%"]:::new
 ```
 
-K8s `Deployment` avec `RollingUpdate` strategy [📖²](https://kubernetes.io/docs/concepts/workloads/controllers/deployment/#rolling-update-deployment). Standard de facto.
+K8s `Deployment` avec `RollingUpdate` strategy [📖²](https://kubernetes.io/docs/concepts/workloads/controllers/deployment/#rolling-update-deployment "Kubernetes — Rolling update deployments"). Standard de facto.
 
 - ✅ Pas d'interruption
 - ✅ Rollback rapide (revert le déploiement)
@@ -378,7 +378,7 @@ La release engineering single-service décrite chez Google s'étend à l'échell
 Sources primaires vérifiées :
 
 1. [Google SRE book ch. 8 — Release Engineering](https://sre.google/sre-book/release-engineering/ "Google SRE book ch. 8 — Release Engineering") — 5 citations verbatim + Push on Green
-2. [Kubernetes — Rolling update deployments](https://kubernetes.io/docs/concepts/workloads/controllers/deployment/#rolling-update-deployment)
+2. [Kubernetes — Rolling update deployments](https://kubernetes.io/docs/concepts/workloads/controllers/deployment/#rolling-update-deployment "Kubernetes — Rolling update deployments")
 3. [Google SRE book ch. 17 — Testing for Reliability](https://sre.google/sre-book/testing-reliability/ "Google SRE book ch. 17 — Testing for Reliability") — canary = structured user acceptance, build broken priority
 4. [Martin Fowler — Blue-Green Deployment](https://martinfowler.com/bliki/BlueGreenDeployment.html "Martin Fowler — Blue-Green Deployment")
 5. [Microsoft Azure WAF — Safe deployment practices](https://learn.microsoft.com/en-us/azure/well-architected/operational-excellence/safe-deployments "Microsoft Azure WAF — Safe deployment practices (ring deployment)") — ring deployment

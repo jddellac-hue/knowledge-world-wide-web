@@ -120,13 +120,13 @@ Avantage : RED est plus prescriptif que les 4 golden signals — il dit *exactem
 
 ## USE method — Brendan Gregg (ressources)
 
-Définition canonique [📖⁴](https://www.brendangregg.com/usemethod.html "Brendan Gregg (Netflix) — The USE Method") :
+Définition canonique [📖³](https://www.brendangregg.com/usemethod.html "Brendan Gregg (Netflix) — The USE Method") :
 
 > *"For every resource, check utilization, saturation, and errors."*
 >
 > *En français* : pour **chaque** ressource, vérifier utilization, saturation, et errors.
 
-Définitions exactes de Gregg [📖⁴](https://www.brendangregg.com/usemethod.html "Brendan Gregg (Netflix) — The USE Method") :
+Définitions exactes de Gregg [📖³](https://www.brendangregg.com/usemethod.html "Brendan Gregg (Netflix) — The USE Method") :
 
 | Lettre | Définition officielle |
 |--------|----------------------|
@@ -228,7 +228,7 @@ async def metrics_middleware(request, call_next):
     return response
 ```
 
-*Exemple de code conforme au client Python Prometheus [📖⁵](https://prometheus.github.io/client_python/) et aux bonnes pratiques histogramme [📖²](https://prometheus.io/docs/practices/histograms/ "Prometheus — Practices: Histograms and Summaries").*
+*Exemple de code conforme au client Python Prometheus [📖⁴](https://prometheus.github.io/client_python/ "Prometheus — Python Client (Counter, Histogram, Gauge)") et aux bonnes pratiques histogramme [📖²](https://prometheus.io/docs/practices/histograms/ "Prometheus — Practices: Histograms and Summaries").*
 
 ### Pour une ressource (USE)
 
@@ -246,7 +246,7 @@ node_load1 / count(node_cpu_seconds_total{mode="idle"})
 rate(node_disk_io_time_seconds_total[5m])
 ```
 
-*PromQL standard basé sur les métriques de [node_exporter](https://github.com/prometheus/node_exporter) [📖⁶](https://github.com/prometheus/node_exporter).*
+*PromQL standard basé sur les métriques de [node_exporter](https://github.com/prometheus/node_exporter) [📖⁵](https://github.com/prometheus/node_exporter "Prometheus — node_exporter (métriques système PromQL)").*
 
 ## Le piège des dashboards "tableaux de bord noël"
 
@@ -265,9 +265,9 @@ Anti-pattern récurrent : 50 panels sur un dashboard, aucun ne raconte d'histoir
 ## Lien avec les pratiques d'observabilité
 
 Les golden signals sont la **brique de base** du monitoring. L'observabilité moderne (cf. [`observability-vs-monitoring.md`](observability-vs-monitoring.md)) ajoute :
-- Distributed tracing (lien entre services) [📖⁷](https://opentelemetry.io/docs/concepts/signals/traces/)
-- Wide events (toutes les dimensions, haute cardinalité) [📖⁸](https://www.honeycomb.io/blog/time-to-version-observability)
-- Logs structurés corrélés aux traces [📖⁹](https://opentelemetry.io/docs/concepts/signals/logs/)
+- Distributed tracing (lien entre services) [📖⁶](https://opentelemetry.io/docs/concepts/signals/traces/ "OpenTelemetry — Traces")
+- Wide events (toutes les dimensions, haute cardinalité) [📖⁷](https://www.honeycomb.io/blog/time-to-version-observability "Honeycomb — Time to version observability (wide events)")
+- Logs structurés corrélés aux traces [📖⁸](https://opentelemetry.io/docs/concepts/signals/logs/ "OpenTelemetry — Logs")
 
 Mais sans golden signals correctement instrumentés, l'observabilité avancée ne sert à rien : vous ne savez même pas que quelque chose va mal.
 
@@ -277,16 +277,16 @@ Sources primaires vérifiées dans ce document :
 
 1. [SRE book ch. 6 — The Four Golden Signals](https://sre.google/sre-book/monitoring-distributed-systems/#xref_monitoring_golden-signals "Google SRE book ch. 6 — Monitoring, section The Four Golden Signals") — 7 citations verbatim confirmées
 2. [Prometheus — Histograms and Summaries](https://prometheus.io/docs/practices/histograms/ "Prometheus — Practices: Histograms and Summaries") — bonnes pratiques buckets
-3. [TheNewStack — Monitoring Microservices: The RED Method](https://thenewstack.io/monitoring-microservices-red-method/) — contexte historique 2015 London meetup
-4. [Brendan Gregg — The USE Method](https://www.brendangregg.com/usemethod.html "Brendan Gregg (Netflix) — The USE Method") — définition officielle, vocabulaire
-5. [Prometheus Python Client](https://prometheus.github.io/client_python/) — Counter, Histogram, Gauge
-6. [Prometheus — node_exporter](https://github.com/prometheus/node_exporter) — métriques système PromQL
-7. [OpenTelemetry — Traces](https://opentelemetry.io/docs/concepts/signals/traces/)
-8. [Honeycomb — Wide events / time to version observability](https://www.honeycomb.io/blog/time-to-version-observability)
-9. [OpenTelemetry — Logs](https://opentelemetry.io/docs/concepts/signals/logs/)
+3. [Brendan Gregg — The USE Method](https://www.brendangregg.com/usemethod.html "Brendan Gregg (Netflix) — The USE Method") — définition officielle, vocabulaire
+4. [Prometheus Python Client](https://prometheus.github.io/client_python/ "Prometheus — Python Client (Counter, Histogram, Gauge)") — Counter, Histogram, Gauge
+5. [Prometheus — node_exporter](https://github.com/prometheus/node_exporter "Prometheus — node_exporter (métriques système PromQL)") — métriques système PromQL
+6. [OpenTelemetry — Traces](https://opentelemetry.io/docs/concepts/signals/traces/ "OpenTelemetry — Traces")
+7. [Honeycomb — Wide events / time to version observability](https://www.honeycomb.io/blog/time-to-version-observability "Honeycomb — Time to version observability (wide events)")
+8. [OpenTelemetry — Logs](https://opentelemetry.io/docs/concepts/signals/logs/ "OpenTelemetry — Logs")
 
 Ressources complémentaires :
 - [Grafana Labs — The RED Method](https://grafana.com/blog/the-red-method-how-to-instrument-your-services/ "Grafana Labs — The RED Method (Tom Wilkie)") (URL canonique actuelle, ex-Weaveworks)
+- [TheNewStack — Monitoring Microservices: The RED Method](https://thenewstack.io/monitoring-microservices-red-method/) — contexte historique 2015 London meetup
 - [Grafana — Dashboard Best Practices](https://grafana.com/docs/grafana/latest/dashboards/build-dashboards/best-practices/)
 - [Microsoft Azure WAF — Observability](https://learn.microsoft.com/en-us/azure/well-architected/operational-excellence/observability)
 - [Brendan Gregg — USE Method Linux Checklist](https://www.brendangregg.com/USEmethod/use-linux.html)

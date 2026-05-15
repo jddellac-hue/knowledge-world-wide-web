@@ -249,7 +249,7 @@ Chaque ligne de code est une source potentielle de panne. Le SRE valorise (cf. [
 
 ### 6.7 On-Call et gestion des incidents
 
-Un SRE ne passe **pas** sa vie en astreinte (cf. [SRE book ch. 11 — *Being On-Call*](https://sre.google/sre-book/being-on-call/ "Google SRE book ch. 11 — Being On-Call")). Google vise [📖⁴](https://sre.google/workbook/on-call/ "Google SRE workbook — On-Call") :
+Un SRE ne passe **pas** sa vie en astreinte (cf. [SRE book ch. 11 — *Being On-Call*](https://sre.google/sre-book/being-on-call/ "Google SRE book ch. 11 — Being On-Call")). Google vise [📖³](https://sre.google/workbook/on-call/ "Google SRE workbook — On-Call") :
 - Maximum 2 incidents significatifs par astreinte (12h)
 - Postmortem blameless systématique après incident P1/P2
 - Les mêmes incidents ne doivent pas se répéter (correction structurelle)
@@ -316,10 +316,10 @@ Sources primaires :
 
 1. [Google SRE book — Introduction](https://sre.google/sre-book/introduction/ "Google SRE book — Introduction (Benjamin Treynor Sloss)") — citation Ben Treynor Sloss verbatim
 2. [C.A.R. Hoare — Turing Award Lecture 1980](https://www.cs.fsu.edu/~engelen/courses/HPC-adv/p75-hoare.pdf "C.A.R. Hoare — Turing Award Lecture 1980") — *"pursuit of the utmost simplicity"*
-3. [Google SRE book ch. 7 — Simplicity](https://sre.google/sre-book/simplicity/ "Google SRE book ch. 7 — Simplicity") — reprise de la citation Hoare
-4. [Google SRE workbook — On-Call](https://sre.google/workbook/on-call/ "Google SRE workbook — On-Call") — limite 2 incidents/shift
+3. [Google SRE workbook — On-Call](https://sre.google/workbook/on-call/ "Google SRE workbook — On-Call") — limite 2 incidents/shift
 
 Ressources complémentaires :
+- [Google SRE book ch. 7 — Simplicity](https://sre.google/sre-book/simplicity/ "Google SRE book ch. 7 — Simplicity") — reprise de la citation Hoare
 - [Google SRE book table of contents](https://sre.google/sre-book/table-of-contents/ "Google SRE book — Table of contents")
 - [Google SRE workbook](https://sre.google/workbook/table-of-contents/ "Google SRE workbook — Table of contents")
 - [Dave Rensin — class SRE implements DevOps](https://www.oreilly.com/content/how-class-sre-implements-interface-devops/ "Dave Rensin (Google) — class SRE implements DevOps")

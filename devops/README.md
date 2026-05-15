@@ -41,6 +41,8 @@ mindmap
 | [guides/local-dev-environment.md](guides/local-dev-environment.md) | Environnement de dev local |
 | [guides/semantic-release.md](guides/semantic-release.md) | Semantic Release |
 | [guides/gitlab-github-sync.md](guides/gitlab-github-sync.md) | GitLab ↔ GitHub — options de synchronisation (verdict : source unique + mirror one-way) |
+| [guides/gitlab-pages.md](guides/gitlab-pages.md) | GitLab Pages — publication de sites statiques depuis le pipeline |
+| [experience/copilot-cli.md](experience/copilot-cli.md) | Copilot CLI — retour d'expérience d'utilisation en ligne de commande |
 | [guides/testing.md](guides/testing.md) | Tests |
 | [guides/workflow.md](guides/workflow.md) | Workflow |
 

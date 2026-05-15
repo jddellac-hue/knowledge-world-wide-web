@@ -37,7 +37,7 @@ Et sur la métaphore originelle [📖²](https://martinfowler.com/bliki/SmokeTes
 
 Le SRE book ch. 17 traite **smoke** et **sanity** comme synonymes [📖¹](https://sre.google/sre-book/testing-reliability/ "Google SRE book ch. 17 — Testing for Reliability"). Dans la pratique SRE/DevOps moderne c'est ce qui domine : mêmes tags `@smoke`, même gate post-deploy, même objectif (court-circuiter les tests plus coûteux).
 
-Historiquement, l'école QA traditionnelle (ISTQB, industries régulées : banque, médical, aviation) distingue les deux par deux axes — **largeur** de scope et **profondeur** de vérification [📖⁶](https://en.wikipedia.org/wiki/Sanity_check "Wikipedia — Sanity check (origine QA)") :
+Historiquement, l'école QA traditionnelle (ISTQB, industries régulées : banque, médical, aviation) distingue les deux par deux axes — **largeur** de scope et **profondeur** de vérification [📖³](https://en.wikipedia.org/wiki/Sanity_check "Wikipedia — Sanity check (origine QA)") :
 
 | Axe | Smoke test | Sanity test |
 |-----|------------|-------------|
@@ -55,7 +55,7 @@ Historiquement, l'école QA traditionnelle (ISTQB, industries régulées : banqu
 
 Dans la pratique dev quotidienne, le *sanity test* désigne souvent le **petit test rapide que le développeur exécute localement juste après un changement**, avant même de pusher. Objectif : vérifier que la modif ciblée n'a rien cassé de visible, sans lancer la suite complète.
 
-> ⚠️ **Pas une définition canonique verbatim.** Aucune source de référence (Wikipedia, SRE book, Martin Fowler) n'énonce telle quelle cette équivalence *sanity = test local du dev post-modif*. C'est un **usage communautaire** très répandu, cohérent avec la définition Wikipedia qui situe les sanity tests *« prior to merging development code into a testing or trunk version control branch »* [📖⁶](https://en.wikipedia.org/wiki/Sanity_check "Wikipedia — Sanity check (origine QA)"), c'est-à-dire **avant merge** — ce qui, dans une boucle dev moderne, inclut naturellement l'exécution locale avant push.
+> ⚠️ **Pas une définition canonique verbatim.** Aucune source de référence (Wikipedia, SRE book, Martin Fowler) n'énonce telle quelle cette équivalence *sanity = test local du dev post-modif*. C'est un **usage communautaire** très répandu, cohérent avec la définition Wikipedia qui situe les sanity tests *« prior to merging development code into a testing or trunk version control branch »* [📖³](https://en.wikipedia.org/wiki/Sanity_check "Wikipedia — Sanity check (origine QA)"), c'est-à-dire **avant merge** — ce qui, dans une boucle dev moderne, inclut naturellement l'exécution locale avant push.
 
 **Cross-références dans cette KB :**
 - [`capacity-planning-load.md`](capacity-planning-load.md) — *sanity check* au sens **load testing** : charge faible et courte qui valide que le système démarre et que l'instrumentation fonctionne avant un vrai load test. Même sémantique transposée au test de charge.
@@ -354,6 +354,7 @@ Sources primaires vérifiées :
 
 1. [Google SRE book ch. 17 — Testing for Reliability](https://sre.google/sre-book/testing-reliability/ "Google SRE book ch. 17 — Testing for Reliability") — définition smoke tests dans *System tests*
 2. [Martin Fowler — SmokeTest](https://martinfowler.com/bliki/SmokeTest.html "Martin Fowler — SmokeTest (définition canonique)") — définition canonique + origine du terme (métaphore électrique)
+3. [Wikipedia — Sanity check](https://en.wikipedia.org/wiki/Sanity_check "Wikipedia — Sanity check (origine QA)") — origine QA, distinction historique smoke/sanity
 
 Ressources complémentaires :
 - [Martin Fowler — Continuous Integration](https://martinfowler.com/articles/continuousIntegration.html "Martin Fowler — Continuous Integration")
