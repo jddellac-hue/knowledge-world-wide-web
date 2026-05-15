@@ -30,6 +30,7 @@ mindmap
       best-practices.md
       semantic-release.md
       gitlab-github-sync.md
+      git-history-refacto.md
 ```
 
 | Fichier | Description |
@@ -43,6 +44,7 @@ mindmap
 | [guides/gitlab-github-sync.md](guides/gitlab-github-sync.md) | GitLab ↔ GitHub — options de synchronisation (verdict : source unique + mirror one-way) |
 | [guides/gitlab-pages.md](guides/gitlab-pages.md) | GitLab Pages — publication de sites statiques depuis le pipeline |
 | [experience/copilot-cli.md](experience/copilot-cli.md) | Copilot CLI — retour d'expérience d'utilisation en ligne de commande |
+| [experience/git-history-refacto.md](experience/git-history-refacto.md) | Git — refactos d'historique, migration « sans historique » fidèle (`--orphan`), vérif déterministe avant suppression |
 | [guides/testing.md](guides/testing.md) | Tests |
 | [guides/workflow.md](guides/workflow.md) | Workflow |
 
