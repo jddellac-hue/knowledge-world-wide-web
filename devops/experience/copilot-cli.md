@@ -54,6 +54,57 @@ Prérequis : un `gnome-keyring-daemon` doit tourner pour cet UID (vérifier `ps 
 
 Alternative pour environnements 100% headless : fine-grained PAT GitHub avec scope `Copilot Requests` exporté en `COPILOT_GITHUB_TOKEN`. Moins pratique car le PAT doit être généré manuellement avec la bonne permission.
 
+## Piège n°2 (le vrai) : login OAuth qui « saute » — pas un problème réseau
+
+Symptôme en pilotage SSH : `Error: Authentication token found but could not be
+validated` / `Failed to fetch OAuth user login: fetch failed` / `unexpected error`.
+
+**Fausses pistes coûteuses** (vécu, ~plusieurs heures perdues) : on incrimine le
+VPN, un proxy filtrant, le full-tunnel, l'init du shell… Toutes **erronées**.
+Le `ip route` est identique interactif/non-interactif, le DNS résout : ce n'est
+**pas** le réseau.
+
+**Vraie cause** : le **token OAuth Copilot a expiré / « sauté »**. Rien d'autre.
+
+**Leçon durable** : devant un échec d'authentification d'un outil, **refaire le
+login AVANT toute théorie réseau**. Ne pas sur-analyser un symptôme trivial.
+
+**Remédiation** : relancer le device flow et revalider côté navigateur :
+
+```bash
+ssh -tt <host> 'bash -lic "
+  export DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/\$(id -u)/bus
+  export XDG_RUNTIME_DIR=/run/user/\$(id -u)
+  export NVM_DIR=\$HOME/.nvm; . \$NVM_DIR/nvm.sh
+  copilot login 2>&1
+"'
+# → affiche un code XXXX-XXXX : le saisir sur github.com/login/device
+#   avec le compte qui porte la licence Copilot (+ Configure SSO si demandé)
+# → 'Signed in successfully as <user>' = token renouvelé.
+```
+
+## Wrapper de pilotage SSH **validé**
+
+Combinaison qui fonctionne de façon fiable (TTY + shell login interactif + D-Bus) :
+
+```bash
+ssh -tt <host> 'bash -lic "
+  export DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/\$(id -u)/bus
+  export XDG_RUNTIME_DIR=/run/user/\$(id -u)
+  export NVM_DIR=\$HOME/.nvm; . \$NVM_DIR/nvm.sh
+  copilot --model gpt-4.1 -p \"...\" --allow-all-tools --no-ask-user -s
+"'
+```
+
+- `ssh -tt` : force un pseudo-TTY (sans, le job-control casse / sortie perdue).
+- `bash -lic` : shell **login + interactif** → charge l'env qui rend les
+  endpoints GitHub joignables + le keychain accessible.
+- Le message `Failed to connect to bus` résiduel est **inoffensif** (le
+  `DBUS_SESSION_BUS_ADDRESS` exporté prend le relais pour le keychain).
+
+> Un `ssh <host> 'cmd'` simple (non-interactif, non-login) **ne marche pas** :
+> ni l'env réseau ni le keychain ne sont chargés.
+
 ## Mode non-interactif (`-p`)
 
 Pour scripting :
